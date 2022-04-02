@@ -88,10 +88,11 @@ async fn main() -> anyhow::Result<()> {
                     blinkt.set_pixel_rgbb(i as usize, r, g, b, 0.25);
                 }
                 if num_full < 8 && playback.is_playing {
-                    blink_pixel(&mut blinkt, num_full, (r, g, b), 0.25).await?;
-                    blink_pixel(&mut blinkt, num_full, (r, g, b), 0.25).await?;
+                    for _ in 0..5 {
+                        blink_pixel(&mut blinkt, num_full, (r, g, b), 0.25).await?;
+                    }
                 } else {
-                    tokio::time::sleep(Duration::from_millis(2000)).await;
+                    tokio::time::sleep(Duration::from_millis(5000)).await;
                 }
             }
         }
