@@ -94,7 +94,11 @@ async fn main() -> anyhow::Result<()> {
                 } else {
                     tokio::time::sleep(Duration::from_millis(5000)).await;
                 }
+            } else {
+                tokio::time::sleep(Duration::from_millis(5000)).await;
             }
+        } else {
+            tokio::time::sleep(Duration::from_millis(5000)).await;
         }
     }
 }
